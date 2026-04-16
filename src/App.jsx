@@ -406,16 +406,21 @@ function HeroSection() {
   );
 }
 
-// --- 3. PROLOGUE ---
+// --- 3. PROLOGUE (UPDATED WITH CLIENT'S ABOUT US) ---
 function PrologueSection() {
   return (
-    <section className="relative w-full bg-white px-6 md:px-24 h-[35vh] md:h-auto md:py-48 flex items-center z-20">
+    <section className="relative w-full bg-white px-6 md:px-24 h-[40vh] md:h-auto md:py-48 flex items-center z-20">
       <div className="absolute top-0 left-0 w-full leading-none -translate-y-[98%] pointer-events-none"><svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-[15px] md:h-[70px] block"><path d="M0,100 L50,60 L100,100 Z" fill="white" /></svg></div>
       <div className="w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center pt-2 md:pt-0">
-        <p className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] font-semibold text-black/50 mb-2 md:mb-10">[ 01 ] Prologue</p>
-        <h2 className="text-[10px] md:text-2xl lg:text-3xl leading-[1.6] md:leading-[1.8] text-black font-medium" style={{ fontFamily: '"Playfair Display", serif' }}>
-          RFM Wedding is an award-winning Indian wedding photography collective. Based in Jodhpur, our approach is rooted in creating timeless, editorial narratives for the modern dynasty.
+        <p className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] font-semibold text-black/50 mb-4 md:mb-10">[ 01 ] Prologue</p>
+        
+        <h2 className="text-lg md:text-3xl lg:text-4xl leading-[1.5] md:leading-[1.6] text-black font-medium mb-6 md:mb-10" style={{ fontFamily: '"Playfair Display", serif' }}>
+          At RFM Wedding Photography, we believe every wedding is not just an event, but a <span className="italic font-light">beautiful story</span> waiting to be told.
         </h2>
+        
+        <p className="text-xs md:text-base text-black/60 max-w-4xl leading-relaxed">
+          Based in Rajasthan, we specialize in capturing timeless, emotional, and cinematic moments. From the vibrant colors of Haldi and Mehndi to the grand elegance of the wedding day, we don’t just take photos — we capture feelings, traditions, and the magic of your special day.
+        </p>
       </div>
     </section>
   );
@@ -647,7 +652,7 @@ function FeaturedFilm() {
   );
 }
 
-// --- 13. STUDIO SECTION ---
+// --- 13. STUDIO SECTION (ENHANCED ABOUT US WITH CLIENT'S TEXT & KEYWORDS) ---
 function StudioSection() {
   const [img, setImg] = React.useState("");
   React.useEffect(() => { getDoc(doc(db, "siteData", "mainContent")).then(s => { if(s.exists() && s.data().studioImg) setImg(s.data().studioImg) }) }, []);
@@ -655,15 +660,36 @@ function StudioSection() {
   return (
     <section id="about" className="py-32 md:py-48 px-6 md:px-24 bg-white z-20 relative">
       <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-center max-w-7xl mx-auto">
+        
         <div className="w-full md:w-5/12 flex flex-col items-start">
-          <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-black/50 mb-6">The Studio</p>
-          <h2 className="text-5xl md:text-7xl leading-[1.1] mb-8 text-black font-bold tracking-tight" style={{ fontFamily: '"Playfair Display", serif' }}>The Creative <span className="italic font-light">Minds.</span></h2>
-          <p className="text-sm md:text-base leading-relaxed text-black/70 mb-8">RFM is driven by a collective of visual artists, colorists, and storytellers. We don't just shoot weddings; we build cinematic worlds.</p>
-          <a href="#" className="border-b border-black pb-1 text-[10px] uppercase tracking-[0.3em] text-black font-semibold hover:opacity-50 transition-opacity">About the Founders</a>
+          <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-black/50 mb-6">About RFM</p>
+          
+          <h2 className="text-4xl md:text-6xl leading-[1.1] mb-8 text-black font-bold tracking-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
+            Timeless. Emotional. <span className="italic font-light">Cinematic.</span>
+          </h2>
+          
+          <p className="text-sm md:text-base leading-relaxed text-black/70 mb-4">
+            Our team is passionate about turning real emotions into stunning visual memories. With a perfect blend of <span className="font-semibold text-black">traditional photography, candid shots, and cinematic filmmaking</span>, we create a complete wedding experience.
+          </p>
+          
+          <p className="text-sm md:text-base leading-relaxed text-black/70 mb-8">
+            Our goal is simple: to make your memories look as beautiful as they felt. We pride ourselves on delivering premium quality work with creativity and absolute professionalism.
+          </p>
+          
+          {/* SEO Cities listed in a premium, subtle way */}
+          <div className="mt-4 border-t border-black/10 pt-6 w-full">
+            <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-black/40 mb-2">Documenting Love Across Rajasthan</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed text-black/80 font-medium">
+              Jodhpur • Pali • Jalore • Jaisalmer • Barmer • Jaipur • Udaipur • Ajmer • Pushkar
+            </p>
+          </div>
+          
         </div>
+
         <div className="w-full md:w-7/12 h-[50vh] md:h-[70vh] bg-black flex items-center justify-center relative overflow-hidden group">
            {img ? <img src={img} className="w-full h-full object-cover" /> : <span className="text-white/40 tracking-[0.2em] uppercase text-[10px] z-10 text-center px-4">[ Studio / Founder Portrait Image ]</span>}
         </div>
+        
       </div>
     </section>
   );
