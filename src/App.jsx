@@ -325,6 +325,7 @@ function RFMWedding() {
       <FeaturedFilm />
       <StudioSection />
       <InvestmentSection />
+      <StudioMapSection />
       <FooterSection />
       <WhatsAppButton />
     </div>
@@ -747,6 +748,35 @@ function InvestmentSection() {
         .react-datepicker__day:hover { border-radius: 0 !important; background-color: #f0f0f0 !important; }
         .react-datepicker__current-month { font-family: "Playfair Display", serif !important; text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px !important; }
       `}</style>
+    </section>
+  );
+}
+
+// --- 14.5 STUDIO MAP SECTION ---
+function StudioMapSection() {
+  return (
+    <section className="w-full bg-white px-6 md:px-24 pb-32 md:pb-48 z-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-t border-black/10 pt-16">
+           <div>
+             <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-black/40 mb-4">Location</p>
+             <h3 className="font-serif text-4xl md:text-6xl tracking-tight text-black">Visit the <span className="italic font-light">Studio.</span></h3>
+           </div>
+           <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-black/60 text-left md:text-right max-w-xs">1st A Rd, Sardarpura<br/>Jodhpur, Rajasthan</p>
+        </div>
+        <div className="w-full h-[50vh] md:h-[70vh] bg-black relative overflow-hidden border border-black/10">
+          {/* Grayscale Map iframe */}
+          <iframe
+            title="RFM Studio Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.2278453472096!2d73.00845357608889!3d26.28671608670731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c44bb0c68cd%3A0x8e8eb43fc8e03e05!2s1st%20A%20Rd%2C%20Sardarpura%2C%20Jodhpur%2C%20Rajasthan%20342003!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            className="absolute inset-0 w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-700 grayscale"
+            style={{ border: 0, filter: 'grayscale(100%) contrast(110%)' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
     </section>
   );
 }
