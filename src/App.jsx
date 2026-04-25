@@ -475,14 +475,15 @@ function VisualNovelsSection() {
 
   return (
     <section id="archive" className="py-24 md:py-40 bg-white overflow-hidden relative z-20">
+      <style>{`.hide-scroll::-webkit-scrollbar { display: none; } .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
       <div className="px-6 md:px-24 mb-10 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <h3 className="text-5xl md:text-7xl tracking-tight text-black font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>Visual Novels</h3>
-        <div className="flex gap-4 text-[10px] uppercase tracking-[0.2em] font-semibold text-black/60"><span className="hidden md:inline">Hold & Drag</span><span className="md:hidden">Swipe</span><span>→</span></div>
+        <div className="flex gap-4 text-[10px] uppercase tracking-[0.2em] font-semibold text-black/60"><span>Scroll</span><span>→</span></div>
       </div>
       <div className="pl-6 md:pl-24 w-full">
-        <motion.div drag="x" dragConstraints={{ left: -((loopFrames.length - 1) * (window.innerWidth < 768 ? window.innerWidth * 0.85 : window.innerWidth * 0.45)), right: 0 }} className="flex gap-4 md:gap-6 w-max cursor-grab active:cursor-grabbing">
+        <div className="flex gap-4 md:gap-6 overflow-x-auto hide-scroll pb-8 pr-6 md:pr-24 snap-x snap-mandatory">
           {loopFrames.map((frame, index) => (
-            <div key={index} className="w-[85vw] md:w-[45vw] h-[55vh] md:h-[65vh] relative group flex flex-col justify-between shrink-0">
+            <div key={index} className="w-[85vw] md:w-[45vw] h-[55vh] md:h-[65vh] relative group flex flex-col justify-between shrink-0 snap-center md:snap-start">
                <div className="w-full h-full bg-black relative overflow-hidden border border-black/5">
                  {loopUrls[index] ? <img src={loopUrls[index]} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" /> : <span className="absolute inset-0 flex items-center justify-center text-white/40 tracking-[0.2em] uppercase text-[10px] px-4 text-center z-10">[ Frame: {frame.label} ]</span>}
                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -492,7 +493,7 @@ function VisualNovelsSection() {
                </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -574,18 +575,19 @@ function ImageBreakSection() {
 
   return (
     <section className="py-24 md:py-40 bg-black overflow-hidden relative z-20">
+      <style>{`.hide-scroll::-webkit-scrollbar { display: none; } .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
       <div className="px-6 md:px-24 mb-10 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 text-white">
         <h3 className="text-5xl md:text-7xl tracking-tight font-bold font-serif">Editorial <span className="italic font-light opacity-60">Portraits</span></h3>
-        <div className="text-[10px] uppercase tracking-[0.2em] font-semibold opacity-50">Hold & Drag →</div>
+        <div className="text-[10px] uppercase tracking-[0.2em] font-semibold opacity-50">Scroll →</div>
       </div>
       <div className="pl-6 md:pl-24 w-full">
-        <motion.div drag="x" dragConstraints={{ left: -((loopImages.length - 1) * (window.innerWidth < 768 ? window.innerWidth * 0.8 : window.innerWidth * 0.25)), right: 0 }} className="flex gap-4 md:gap-6 w-max cursor-grab active:cursor-grabbing pb-8">
+        <div className="flex gap-4 md:gap-6 overflow-x-auto hide-scroll pb-8 pr-6 md:pr-24 snap-x snap-mandatory">
           {loopImages.map((url, index) => (
-            <div key={index} className="w-[75vw] md:w-[22vw] aspect-[9/16] bg-[#111] relative group overflow-hidden shrink-0 border border-white/5">
+            <div key={index} className="w-[75vw] md:w-[22vw] aspect-[9/16] bg-[#111] relative group overflow-hidden shrink-0 border border-white/5 snap-center md:snap-start">
                {url ? <img src={url} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" /> : <span className="absolute inset-0 flex items-center justify-center text-white/20 tracking-[0.2em] uppercase text-[10px]">Photo Coming Soon</span>}
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
