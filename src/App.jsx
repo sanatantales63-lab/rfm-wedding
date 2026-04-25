@@ -584,7 +584,7 @@ function ImageBreakSection() {
         <div className="flex gap-4 md:gap-6 overflow-x-auto hide-scroll pb-8 pr-6 md:pr-24 snap-x snap-mandatory">
           {loopImages.map((url, index) => (
             <div key={index} className="w-[75vw] md:w-[22vw] aspect-[9/16] bg-[#111] relative group overflow-hidden shrink-0 border border-white/5 snap-center md:snap-start">
-               {url ? <img src={url} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" /> : <span className="absolute inset-0 flex items-center justify-center text-white/20 tracking-[0.2em] uppercase text-[10px]">Photo Coming Soon</span>}
+               {url ? <img src={url} className="w-full h-full object-cover grayscale-0 md:grayscale hover:grayscale-0 transition-all duration-1000" /> : <span className="absolute inset-0 flex items-center justify-center text-white/20 tracking-[0.2em] uppercase text-[10px]">Photo Coming Soon</span>}
             </div>
           ))}
         </div>
